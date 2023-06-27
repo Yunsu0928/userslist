@@ -70,7 +70,34 @@ const BlueButton = styled.button`
 	}
 `;
 
-const UsersBox = styled.div``;
+const UsersBox = styled.div`
+	width: 90%;
+	background-color: yellow;
+	display: flex;
+	flex-wrap: wrap;
+`;
+
+const UserItem = styled.div`
+	width: 33%;
+	height: 100%;
+	background-color: #fbfcff;
+	display: flex;
+	justify-content: center;
+	margin-left: 2px;
+	margin-bottom: 1%;
+`;
+
+const UserImg = styled.div`
+	width: 50%;
+	border: 1px solid red;
+	border-radius: 50%;
+`;
+
+const UserInfo = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+`;
 
 function App() {
 	return (
@@ -92,7 +119,40 @@ function App() {
 						</ButtonBox>
 					</NavBar>
 				</TitleBox>
-				<UsersBox>Useradklfjakldfjakldjfkladjfklajfdlkjaklf</UsersBox>
+				<UsersBox>
+					<UserItem>
+						<UserImg>사진tkdkjakldfjlka</UserImg>
+						<UserInfo>
+							<div>Lelah Nichols</div>
+							<div>Troy, MI</div>
+							<div>clothes, stem</div>
+						</UserInfo>
+					</UserItem>
+					<UserItem>
+						<UserImg>사진tkdkjakldfjlka</UserImg>
+						<UserInfo>
+							<div>Lelah Nichols</div>
+							<div>Troy, MI</div>
+							<div>clothes, stem</div>
+						</UserInfo>
+					</UserItem>
+					<UserItem>
+						<UserImg>사진tkdkjakldfjlka</UserImg>
+						<UserInfo>
+							<div>Lelah Nichols</div>
+							<div>Troy, MI</div>
+							<div>clothes, stem</div>
+						</UserInfo>
+					</UserItem>
+					<UserItem>
+						<UserImg>사진tkdkjakldfjlka</UserImg>
+						<UserInfo>
+							<div>Lelah Nichols</div>
+							<div>Troy, MI</div>
+							<div>clothes, stem</div>
+						</UserInfo>
+					</UserItem>
+				</UsersBox>
 			</InnerContainer>
 		</Container>
 	);
