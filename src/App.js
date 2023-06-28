@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
+import UserItem from "./components/UserItem";
 
 const Container = styled.div`
 	width: 100vw;
@@ -61,7 +63,7 @@ const ButtonBox = styled.div`
 `;
 
 const BlueButton = styled.button`
-	width: 100%;
+	width: 50%;
 	border: none;
 	background-color: #ffffff;
 	&:hover {
@@ -77,29 +79,21 @@ const UsersBox = styled.div`
 	flex-wrap: wrap;
 `;
 
-const UserItem = styled.div`
-	width: 33%;
-	height: 100%;
-	background-color: #fbfcff;
-	display: flex;
-	justify-content: center;
-	margin-left: 2px;
-	margin-bottom: 1%;
-`;
-
-const UserImg = styled.div`
-	width: 50%;
-	border: 1px solid red;
-	border-radius: 50%;
-`;
-
-const UserInfo = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-`;
-
 function App() {
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		fetch("https://randomuser.me/api?results=10")
+			.then((res) => res.json())
+			.then((d) => {
+				// console.log(d.results[0]);
+				setData(d.results);
+				//setData([d.results]) >> 블로그 작성
+			});
+	}, []);
+
+	console.log("data:", data);
+
 	return (
 		<Container>
 			<InnerContainer>
@@ -112,7 +106,7 @@ function App() {
 						</SearchBox>
 						<ButtonBox>
 							<BlueButton>Reputation</BlueButton>
-							<BlueButton>New users</BlueButton>
+							<BlueButton>New&nbsp;users</BlueButton>
 							<BlueButton>Voters</BlueButton>
 							<BlueButton>Editors</BlueButton>
 							<BlueButton>Moderators</BlueButton>
@@ -120,38 +114,9 @@ function App() {
 					</NavBar>
 				</TitleBox>
 				<UsersBox>
-					<UserItem>
-						<UserImg>사진tkdkjakldfjlka</UserImg>
-						<UserInfo>
-							<div>Lelah Nichols</div>
-							<div>Troy, MI</div>
-							<div>clothes, stem</div>
-						</UserInfo>
-					</UserItem>
-					<UserItem>
-						<UserImg>사진tkdkjakldfjlka</UserImg>
-						<UserInfo>
-							<div>Lelah Nichols</div>
-							<div>Troy, MI</div>
-							<div>clothes, stem</div>
-						</UserInfo>
-					</UserItem>
-					<UserItem>
-						<UserImg>사진tkdkjakldfjlka</UserImg>
-						<UserInfo>
-							<div>Lelah Nichols</div>
-							<div>Troy, MI</div>
-							<div>clothes, stem</div>
-						</UserInfo>
-					</UserItem>
-					<UserItem>
-						<UserImg>사진tkdkjakldfjlka</UserImg>
-						<UserInfo>
-							<div>Lelah Nichols</div>
-							<div>Troy, MI</div>
-							<div>clothes, stem</div>
-						</UserInfo>
-					</UserItem>
+					{data.map((e) => {
+						return <UserItem img={e.picture.thumbnail} />;
+					})}
 				</UsersBox>
 			</InnerContainer>
 		</Container>
