@@ -23,13 +23,17 @@ const UserInfo = styled.div`
 	justify-content: center;
 `;
 
-function UserItem({ img }) {
+function UserItem({ img, first, last, city, country }) {
 	return (
 		<Container>
 			<UserImg>{img}</UserImg>
 			<UserInfo>
-				<div>Lelah Nichols</div>
-				<div>Troy, MI</div>
+				<div>
+					{first}&nbsp;{last}
+				</div>
+				<div>
+					{city}, {country}
+				</div>
 				<div>clothes, stem</div>
 			</UserInfo>
 		</Container>
