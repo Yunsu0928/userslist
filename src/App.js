@@ -115,7 +115,15 @@ function App() {
 				</TitleBox>
 				<UsersBox>
 					{data.map((e) => {
-						return <UserItem img={e.picture.thumbnail} />;
+						return (
+							<UserItem
+								img={e.picture.thumbnail}
+								first={e.name.first}
+								last={e.name.last}
+								city={e.location.city}
+								country={e.location.country}
+							/>
+						);
 					})}
 				</UsersBox>
 			</InnerContainer>
