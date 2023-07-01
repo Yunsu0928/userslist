@@ -13,10 +13,9 @@ const Container = styled.div`
 `;
 
 const UserImg = styled.div`
-	/* background-image: url(); */
+	background-image: ${(props) => `url(${props.url})`};
 	width: 40%;
 	height: 70%;
-	border: 1px solid red;
 	border-radius: 50%;
 `;
 
@@ -36,10 +35,20 @@ const StyledCountry = styled.div`
 	margin-top: 3%;
 `;
 
+const StyledTagBox = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+`;
+
 const StyledTag = styled.span`
+	width: fit-content;
+	padding: 1% 2%;
 	margin-top: 3%;
-	font-size: 10px;
-	border: 1px solid black;
+	margin-right: 2%;
+	font-size: 11px;
+	border: 1px solid #bfc8e6;
+	border-radius: 20%;
+	color: #516fd4;
 `;
 
 function UserItem({ img, first, last, city, country }) {
@@ -47,7 +56,8 @@ function UserItem({ img, first, last, city, country }) {
 
 	return (
 		<Container>
-			<UserImg>{img}</UserImg>
+			<UserImg url={img} />
+			{/* 또다른 방법 <UserImg src={img} /> 위의 styled에 img태그로 변환! */}
 			<UserInfo>
 				<StyledUsername>
 					{first}&nbsp;{last}
@@ -55,9 +65,11 @@ function UserItem({ img, first, last, city, country }) {
 				<StyledCountry>
 					{city}, {country}
 				</StyledCountry>
-				{tag.map((e) => {
-					return <StyledTag>{e}</StyledTag>;
-				})}
+				<StyledTagBox>
+					{tag.map((e) => {
+						return <StyledTag>{e}</StyledTag>;
+					})}
+				</StyledTagBox>
 			</UserInfo>
 		</Container>
 	);
