@@ -117,7 +117,7 @@ function App() {
 					{data.map((e) => {
 						return (
 							<UserItem
-								img={e.picture.thumbnail}
+								img={e.picture.large}
 								first={e.name.first}
 								last={e.name.last}
 								city={e.location.city}
