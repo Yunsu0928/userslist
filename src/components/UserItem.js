@@ -3,16 +3,19 @@ import styled from "styled-components";
 
 const Container = styled.div`
 	width: 33%;
-	height: 100%;
+	height: 57%;
 	background-color: #fbfcff;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	margin-left: 2px;
 	margin-bottom: 1%;
 `;
 
 const UserImg = styled.div`
-	width: 50%;
+	/* background-image: url(); */
+	width: 40%;
+	height: 70%;
 	border: 1px solid red;
 	border-radius: 50%;
 `;
@@ -21,20 +24,40 @@ const UserInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	margin: 6%;
+`;
+
+const StyledUsername = styled.div`
+	font-weight: bold;
+`;
+
+const StyledCountry = styled.div`
+	font-size: 13px;
+	margin-top: 3%;
+`;
+
+const StyledTag = styled.span`
+	margin-top: 3%;
+	font-size: 10px;
+	border: 1px solid black;
 `;
 
 function UserItem({ img, first, last, city, country }) {
+	const tag = ["clothes", "electric", "nature", "music", "trip"];
+
 	return (
 		<Container>
 			<UserImg>{img}</UserImg>
 			<UserInfo>
-				<div>
+				<StyledUsername>
 					{first}&nbsp;{last}
-				</div>
-				<div>
+				</StyledUsername>
+				<StyledCountry>
 					{city}, {country}
-				</div>
-				<div>clothes, stem</div>
+				</StyledCountry>
+				{tag.map((e) => {
+					return <StyledTag>{e}</StyledTag>;
+				})}
 			</UserInfo>
 		</Container>
 	);
