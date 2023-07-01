@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
+
 import UserItem from "./components/UserItem";
 
 const Container = styled.div`
@@ -24,7 +25,7 @@ const InnerContainer = styled.div`
 `;
 
 const TitleBox = styled.div`
-	margin: 8%;
+	margin: 7% 6% 5% 8%;
 	width: 85%;
 	display: flex;
 	flex-direction: column;
@@ -74,13 +75,14 @@ const BlueButton = styled.button`
 
 const UsersBox = styled.div`
 	width: 90%;
-	background-color: yellow;
+	height: 50%;
 	display: flex;
 	flex-wrap: wrap;
 `;
 
 function App() {
 	const [data, setData] = useState([]);
+	const button = ["Reputation", `New users`, "Voters", "Editors", "Moderators"];
 
 	useEffect(() => {
 		fetch("https://randomuser.me/api?results=10")
@@ -105,11 +107,9 @@ function App() {
 							<StyledInput type={"text"} placeholder={"Search users"} />
 						</SearchBox>
 						<ButtonBox>
-							<BlueButton>Reputation</BlueButton>
-							<BlueButton>New&nbsp;users</BlueButton>
-							<BlueButton>Voters</BlueButton>
-							<BlueButton>Editors</BlueButton>
-							<BlueButton>Moderators</BlueButton>
+							{button.map((e) => {
+								return <BlueButton>{e}</BlueButton>;
+							})}
 						</ButtonBox>
 					</NavBar>
 				</TitleBox>
