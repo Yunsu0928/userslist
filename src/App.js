@@ -122,6 +122,7 @@ function App() {
 								last={e.name.last}
 								city={e.location.city}
 								country={e.location.country}
+								age={e.dob.age}
 							/>
 						);
 					})}
