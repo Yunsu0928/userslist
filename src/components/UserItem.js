@@ -51,7 +51,7 @@ const StyledTag = styled.span`
 	color: #516fd4;
 `;
 
-function UserItem({ img, first, last, city, country }) {
+function UserItem({ img, first, last, city, country, age }) {
 	const tag = ["clothes", "electric", "nature", "music", "trip"];
 
 	return (
@@ -66,9 +66,11 @@ function UserItem({ img, first, last, city, country }) {
 					{city}, {country}
 				</StyledCountry>
 				<StyledTagBox>
-					{tag.map((e) => {
+					{tag.slice(0, (age % tag.length) + 1).map((e) => {
 						return <StyledTag>{e}</StyledTag>;
 					})}
+                    {/* tag배열에 있는 요소들을 slice해서 보여주면 하나의 문자열로 보여지게 된다. 
+                    slice는 배열이 결과물이니까 map을 돌려서 각 요소에 StyledTag css요소를 준다 */}
 				</StyledTagBox>
 			</UserInfo>
 		</Container>
