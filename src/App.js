@@ -78,6 +78,7 @@ const UsersBox = styled.div`
 	height: 50%;
 	display: flex;
 	flex-wrap: wrap;
+	overflow: scroll;
 `;
 
 function App() {
