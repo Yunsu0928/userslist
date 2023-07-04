@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
 
 import UserItem from "./components/UserItem";
+import Pagination from "./components/Pagination";
 
 const Container = styled.div`
 	width: 100vw;
@@ -84,9 +85,16 @@ const UsersBox = styled.div`
 function App() {
 	const [data, setData] = useState([]);
 	const button = ["Reputation", `New users`, "Voters", "Editors", "Moderators"];
+	const [limit, setLimit] = useState(9); // 페이지당 게시물 수 // postsPerPage
+	const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 번호
+	// const offset = (currentPage - 1) * limit; // 첫 게시물의 위치(인덱스)
+	// 1번째 페이지의 첫 게시물 위치(index) : 0 : (1-1)*9 = 0
+	// 2번째 페이지의 첫 게시물 위치(index) : 9 : (2-1)*9 = 9
+	// 3번째 페이지의 첫 게시물 위치(index) : 18 : (3-1)*9 = 18
+	// 4번째 페이지의 첫 게시물 위치(index) : 27 : (4-1)*9 = 27
 
 	useEffect(() => {
-		fetch("https://randomuser.me/api?results=10")
+		fetch("https://randomuser.me/api?results=100")
 			.then((res) => res.json())
 			.then((d) => {
 				// console.log(d.results[0]);
@@ -96,6 +104,17 @@ function App() {
 	}, []);
 
 	console.log("data:", data);
+
+	//마지막 게시물의 인덱스를 가져오는 것
+	const indexOfLastUsers = currentPage * limit;
+	// 첫 번째 게시물의 인덱스 얻는 법
+	const indexOfFirstUsers = indexOfLastUsers - limit;
+	// 현재 게시물을 가져오는 것
+	// 원하는 게시물 수를 9개로 잘라낼 수 있도록 마지막 게시물의 인덱스를 이용해서
+	const currentUsers = data.slice(indexOfFirstUsers, indexOfLastUsers);
+
+	// 페이지 바꾸기
+	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
 		<Container>
@@ -115,7 +134,8 @@ function App() {
 					</NavBar>
 				</TitleBox>
 				<UsersBox>
-					{data.map((e) => {
+					{/* 원래는 data.map을 돌렸지만, 1페이지 2페이지마다 보이는 users들을 보여줘야하니까 currentUsers.map이다 */}
+					{currentUsers.map((e) => {
 						return (
 							<UserItem
 								img={e.picture.large}
@@ -128,6 +148,11 @@ function App() {
 						);
 					})}
 				</UsersBox>
+				<Pagination
+					limit={limit}
+					totalUsers={data.length}
+					paginate={paginate}
+				/>
 			</InnerContainer>
 		</Container>
 	);

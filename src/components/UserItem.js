@@ -2,14 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-	width: 33%;
+	width: 30%;
 	height: 57%;
 	background-color: #fbfcff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-left: 2px;
+	margin-left: 15px;
+	padding-left: 1%;
 	margin-bottom: 1%;
+	border-radius: 8%;
+	&:hover {
+		border: 1px solid #bfc8e5;
+	}
 `;
 
 const UserImg = styled.div`
@@ -69,7 +74,7 @@ function UserItem({ img, first, last, city, country, age }) {
 					{tag.slice(0, (age % tag.length) + 1).map((e) => {
 						return <StyledTag>{e}</StyledTag>;
 					})}
-                    {/* tag배열에 있는 요소들을 slice해서 보여주면 하나의 문자열로 보여지게 된다. 
+					{/* tag배열에 있는 요소들을 slice해서 보여주면 하나의 문자열로 보여지게 된다. 
                     slice는 배열이 결과물이니까 map을 돌려서 각 요소에 StyledTag css요소를 준다 */}
 				</StyledTagBox>
 			</UserInfo>
