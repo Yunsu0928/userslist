@@ -2,17 +2,26 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
-	margin-top: 1%;
+	margin-top: 3%;
+	display: flex;
+	align-items: center;
 `;
 
-const StyledUl = styled.ul`
+const StyledButton = styled.button`
+	padding: 1.8%;
+	border: 1px solid #bfc8e5;
+`;
+
+const StyledUl = styled.div`
 	list-style: none;
+	padding: 0px;
+	width: 250px;
 `;
 
-const StyledLi = styled.li`
+const StyledLi = styled.button`
 	float: left;
 	border: 1px solid #bfc8e5;
-	padding: 5px 10px;
+	padding: 2%;
 `;
 
 const StyledA = styled.a`
@@ -20,7 +29,13 @@ const StyledA = styled.a`
 	color: black;
 `;
 
-function Pagination({ limit, totalUsers, paginate }) {
+function Pagination({
+	limit,
+	totalUsers,
+	paginate,
+	currentPage,
+	setCurrentPage,
+}) {
 	const pageNumbers = [];
 
 	for (let i = 1; i <= Math.ceil(totalUsers / limit); i++) {
@@ -29,6 +44,14 @@ function Pagination({ limit, totalUsers, paginate }) {
 
 	return (
 		<StyledNav>
+			<StyledButton
+				onClick={() => {
+					setCurrentPage(Math.abs(currentPage - 1));
+				}}
+			>
+				&lt;
+			</StyledButton>
+			{console.log(currentPage)}
 			<StyledUl>
 				{pageNumbers.map((number) => (
 					<StyledLi key={number}>
@@ -43,6 +66,7 @@ function Pagination({ limit, totalUsers, paginate }) {
 					</StyledLi>
 				))}
 			</StyledUl>
+			<StyledButton>&gt;</StyledButton>
 		</StyledNav>
 	);
 }
