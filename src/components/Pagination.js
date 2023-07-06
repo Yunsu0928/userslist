@@ -67,6 +67,7 @@ function Pagination({
 				))}
 			</StyledUl>
 			<StyledButton>&gt;</StyledButton>
+			<div></div>
 		</StyledNav>
 	);
 }
