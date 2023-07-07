@@ -10,15 +10,16 @@ const StyledNav = styled.nav`
 const StyledButton = styled.button`
 	padding: 1.8%;
 	border: 1px solid #bfc8e5;
+	background-color: white;
 `;
 
-const StyledUl = styled.div`
+const StyledUl = styled.ul`
 	list-style: none;
 	padding: 0px;
 	width: 250px;
 `;
 
-const StyledLi = styled.button`
+const StyledLi = styled.li`
 	float: left;
 	border: 1px solid #bfc8e5;
 	padding: 2%;
@@ -66,7 +67,13 @@ function Pagination({
 					</StyledLi>
 				))}
 			</StyledUl>
-			<StyledButton>&gt;</StyledButton>
+			<StyledButton
+				onClick={() => {
+					setCurrentPage(Math.abs(currentPage + 1));
+				}}
+			>
+				&gt;
+			</StyledButton>
 			<div></div>
 		</StyledNav>
 	);
