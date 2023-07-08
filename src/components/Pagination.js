@@ -47,6 +47,7 @@ function Pagination({
 		<StyledNav>
 			<StyledButton
 				onClick={() => {
+					if (currentPage === 1) return;
 					setCurrentPage(Math.abs(currentPage - 1));
 				}}
 			>
@@ -69,6 +70,7 @@ function Pagination({
 			</StyledUl>
 			<StyledButton
 				onClick={() => {
+					if (currentPage === pageNumbers.length) return;
 					setCurrentPage(Math.abs(currentPage + 1));
 				}}
 			>
