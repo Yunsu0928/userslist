@@ -9,7 +9,8 @@ const StyledNav = styled.nav`
 
 const StyledButton = styled.button`
 	padding: 1.8%;
-	border: 1px solid #bfc8e5;
+	/* border: 1px solid #bfc8e5; */
+	border: none;
 	background-color: white;
 `;
 
@@ -17,6 +18,9 @@ const StyledUl = styled.ul`
 	list-style: none;
 	padding: 0px;
 	width: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 const StyledLi = styled.li`
