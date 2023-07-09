@@ -94,7 +94,7 @@ function App() {
 	// 4번째 페이지의 첫 유저 위치(index) : 27 : (4-1)*9 = 27
 
 	useEffect(() => {
-		fetch("https://randomuser.me/api?results=100")
+		fetch("https://randomuser.me/api?results=90")
 			.then((res) => res.json())
 			.then((d) => {
 				// console.log(d.results[0]);
