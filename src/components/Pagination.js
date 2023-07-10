@@ -80,7 +80,6 @@ function Pagination({
 			>
 				&gt;
 			</StyledButton>
-			<div></div>
 		</StyledNav>
 	);
 }
