@@ -94,7 +94,7 @@ function App() {
 	// 4번째 페이지의 첫 유저 위치(index) : 27 : (4-1)*9 = 27
 
 	useEffect(() => {
-		fetch("https://randomuser.me/api?results=90")
+		fetch("https://randomuser.me/api?results=100")
 			.then((res) => res.json())
 			.then((d) => {
 				// console.log(d.results[0]);
@@ -148,13 +148,15 @@ function App() {
 						);
 					})}
 				</UsersBox>
-				<Pagination
-					limit={limit}
-					totalUsers={data.length}
-					paginate={paginate}
-					currentPage={currentPage}
-					setCurrentPage={setCurrentPage}
-				/>
+				{data.length !== 0 && (
+					<Pagination
+						limit={limit}
+						totalUsers={data.length}
+						paginate={paginate}
+						currentPage={currentPage}
+						setCurrentPage={setCurrentPage}
+					/>
+				)}
 			</InnerContainer>
 		</Container>
 	);

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
@@ -41,11 +42,26 @@ function Pagination({
 	currentPage,
 	setCurrentPage,
 }) {
-	const pageNumbers = [];
+	const initPageNum =
+		Math.ceil(totalUsers / limit) > 10 ? 10 : Math.ceil(totalUsers / limit);
+	const [pageNumbers, setPageNumbers] = useState(
+		new Array(initPageNum).fill().map((_, i) => i + 1)
+	);
 
-	for (let i = 1; i <= Math.ceil(totalUsers / limit); i++) {
-		pageNumbers.push(i);
-	}
+	// const initPageNum =
+	// 	Math.ceil(totalUsers / limit) > 10 ? 10 : Math.ceil(totalUsers / limit);
+	// const [pageNumbers, setPageNumbers] = useState([]);
+
+	// useEffect(() => {
+	// 	setPageNumbers(new Array(initPageNum).fill().map((_, i) => i + 1));
+	// }, [initPageNum]);
+
+	// console.log(pageNumbers);
+	// console.log(totalUsers);
+
+	// for (let i = 1; i <= Math.ceil(totalUsers / limit); i++) {
+	// 	pageNumbers.push(i);
+	// }
 
 	return (
 		<StyledNav>
@@ -53,6 +69,13 @@ function Pagination({
 				onClick={() => {
 					if (currentPage === 1) return;
 					setCurrentPage(Math.abs(currentPage - 1));
+					if (currentPage % 10 === 1) {
+						const newArray = [];
+						for (let i = currentPage - 10; i <= currentPage - 1; i++) {
+							newArray.push(i);
+						}
+						setPageNumbers(newArray);
+					}
 				}}
 			>
 				&lt;
@@ -74,8 +97,16 @@ function Pagination({
 			</StyledUl>
 			<StyledButton
 				onClick={() => {
-					if (currentPage === pageNumbers.length) return;
+					if (currentPage === Math.ceil(totalUsers / limit)) return;
 					setCurrentPage(Math.abs(currentPage + 1));
+					if (currentPage % 10 === 0) {
+						const newArray = [];
+						for (let i = currentPage + 1; i <= currentPage + 10; i++) {
+							if (i > Math.ceil(totalUsers / limit)) break;
+							newArray.push(i);
+						}
+						setPageNumbers(newArray);
+					}
 				}}
 			>
 				&gt;
