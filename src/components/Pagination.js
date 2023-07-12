@@ -1,11 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 const StyledNav = styled.nav`
 	margin-top: 3%;
 	display: flex;
-	align-items: center;
+	/* align-items: center; */
 `;
 
 const StyledButton = styled.button`
@@ -80,7 +80,7 @@ function Pagination({
 			>
 				&lt;
 			</StyledButton>
-			{console.log(currentPage)}
+			{/* {console.log(currentPage)} */}
 			<StyledUl>
 				{pageNumbers.map((number) => (
 					<StyledLi key={number}>
@@ -88,7 +88,7 @@ function Pagination({
 							onClick={() => {
 								paginate(number);
 							}}
-							href="!#"
+							href=""
 						>
 							{number}
 						</StyledA>

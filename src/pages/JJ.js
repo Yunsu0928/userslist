@@ -2,9 +2,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
 
-import UserItem from "./components/UserItem";
-import Pagination from "./components/Pagination";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserItem from "../components/UserItem";
+import Pagination from "../components/Pagination";
 
 const Container = styled.div`
 	width: 100vw;
@@ -83,7 +82,7 @@ const UsersBox = styled.div`
 	overflow: scroll;
 `;
 
-function App() {
+function Newusers() {
 	const [data, setData] = useState([]);
 	const button = ["Reputation", `New users`, "Voters", "Editors", "Moderators"];
 	const [limit, setLimit] = useState(9); // 페이지당 유저 수 // postsPerPage
@@ -119,11 +118,6 @@ function App() {
 
 	return (
 		<Container>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/user" element={""} />
-				</Routes>
-			</BrowserRouter>
 			<InnerContainer>
 				<TitleBox>
 					<Title>Users</Title>
@@ -168,4 +162,4 @@ function App() {
 	);
 }
 
-export default App;
+export default Newusers;
