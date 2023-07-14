@@ -122,10 +122,10 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/user" element={""} />
-					<Route path="" />
-					<Route path="" />
-					<Route path="" />
-					<Route path="" />
+					<Route path="/reputation" />
+					<Route path="/voter" />
+					<Route path="/editor" />
+					<Route path="/moderator" />
 				</Routes>
 			</BrowserRouter>
 			<InnerContainer>
