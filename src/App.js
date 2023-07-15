@@ -122,7 +122,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/user" element={""} />
-					<Route path="/reputation" />
+					<Route path="/reputation" element={""} />
 					<Route path="/voter" />
 					<Route path="/editor" />
 					<Route path="/moderator" />
