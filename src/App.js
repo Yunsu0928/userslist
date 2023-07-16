@@ -5,6 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import UserItem from "./components/UserItem";
 import Pagination from "./components/Pagination";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NotFound from "./pages/NotFound";
 
 const Container = styled.div`
 	width: 100vw;
@@ -122,10 +123,10 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/user" element={""} />
-					<Route path="/reputation" element={""} />
-					<Route path="/voter" />
-					<Route path="/editor" />
-					<Route path="/moderator" />
+					<Route path="/reputation" element={<NotFound />} />
+					<Route path="/voter" element={<NotFound />} />
+					<Route path="/editor" element={<NotFound />} />
+					<Route path="/moderator" element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
 			<InnerContainer>
