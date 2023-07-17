@@ -126,7 +126,6 @@ function App() {
 					<Route path="/reputation" element={<NotFound />} />
 					<Route path="/voter" element={<NotFound />} />
 					<Route path="/editor" element={<NotFound />} />
-					<Route path="/moderator" element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>
 			<InnerContainer>
