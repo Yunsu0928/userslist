@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 
 import UserItem from "./components/UserItem";
 import Pagination from "./components/Pagination";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 
 const Container = styled.div`
@@ -126,6 +126,7 @@ function App() {
 					<Route path="/reputation" element={<NotFound />} />
 					<Route path="/voter" element={<NotFound />} />
 					<Route path="/editor" element={<NotFound />} />
+					{/* <Link to="/">Homepage</Link> */}
 				</Routes>
 			</BrowserRouter>
 			<InnerContainer>
@@ -140,6 +141,9 @@ function App() {
 							{button.map((e) => {
 								return <BlueButton>{e}</BlueButton>;
 							})}
+							{/* <BlueButton>
+								<Link to="/{e}">{e}</Link>
+							</BlueButton> */}
 						</ButtonBox>
 					</NavBar>
 				</TitleBox>
