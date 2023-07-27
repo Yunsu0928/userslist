@@ -126,6 +126,7 @@ function App() {
 					<Route path="/reputation" element={<NotFound />} />
 					<Route path="/voter" element={<NotFound />} />
 					<Route path="/editor" element={<NotFound />} />
+					<Route path="*" element={<NotFound />} />
 					{/* <Link to="/">Reputation</Link> */}
 					{/* <Link to="/">New users</Link> */}
 					{/* <Link to="/">Voter</Link> */}
