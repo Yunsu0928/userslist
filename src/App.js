@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 
 import UserItem from "./components/UserItem";
 import Pagination from "./components/Pagination";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 
 const Container = styled.div`
