@@ -4,8 +4,6 @@ import { BiSearch } from "react-icons/bi";
 
 import UserItem from "./components/UserItem";
 import Pagination from "./components/Pagination";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "./pages/NotFound";
 
 const Container = styled.div`
 	width: 100vw;
@@ -19,7 +17,7 @@ const Container = styled.div`
 const InnerContainer = styled.div`
 	background-color: #ffffff;
 	width: 60%;
-	height: 70%;
+	height: 75%;
 	display: flex;
 	flex-direction: column;
 	/* justify-content: center; */
@@ -76,9 +74,15 @@ const BlueButton = styled.button`
 	}
 `;
 
+const StyledUserPage = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
 const UsersBox = styled.div`
 	width: 90%;
-	height: 50%;
+	height: 65%;
 	display: flex;
 	flex-wrap: wrap;
 	overflow: scroll;
@@ -120,18 +124,6 @@ function App() {
 
 	return (
 		<Container>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/user" element={""} />
-					<Route path="/reputation" element={<NotFound />} />
-					<Route path="/voter" element={<NotFound />} />
-					<Route path="/editor" element={<NotFound />} />
-					<Route path="*" element={<NotFound />} />
-					{/* <Link to="/">Reputation</Link> */}
-					{/* <Link to="/">New users</Link> */}
-					{/* <Link to="/">Voter</Link> */}
-				</Routes>
-			</BrowserRouter>
 			<InnerContainer>
 				<TitleBox>
 					<Title>Users</Title>
@@ -144,36 +136,35 @@ function App() {
 							{button.map((e) => {
 								return <BlueButton>{e}</BlueButton>;
 							})}
-							{/* <BlueButton>
-								<Link to="/{e}">{e}</Link>
-							</BlueButton> */}
 						</ButtonBox>
 					</NavBar>
 				</TitleBox>
-				<UsersBox>
-					{/* 원래는 data.map을 돌렸지만, 1페이지 2페이지마다 보이는 users들을 보여줘야하니까 currentUsers.map이다 */}
-					{currentUsers.map((e) => {
-						return (
-							<UserItem
-								img={e.picture.large}
-								first={e.name.first}
-								last={e.name.last}
-								city={e.location.city}
-								country={e.location.country}
-								age={e.dob.age}
-							/>
-						);
-					})}
-				</UsersBox>
-				{data.length !== 0 && (
-					<Pagination
-						limit={limit}
-						totalUsers={data.length}
-						paginate={paginate}
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-					/>
-				)}
+				<StyledUserPage>
+					<UsersBox>
+						{/* 원래는 data.map을 돌렸지만, 1페이지 2페이지마다 보이는 users들을 보여줘야하니까 currentUsers.map이다 */}
+						{currentUsers.map((e) => {
+							return (
+								<UserItem
+									img={e.picture.large}
+									first={e.name.first}
+									last={e.name.last}
+									city={e.location.city}
+									country={e.location.country}
+									age={e.dob.age}
+								/>
+							);
+						})}
+					</UsersBox>
+					{data.length !== 0 && (
+						<Pagination
+							limit={limit}
+							totalUsers={data.length}
+							paginate={paginate}
+							currentPage={currentPage}
+							setCurrentPage={setCurrentPage}
+						/>
+					)}
+				</StyledUserPage>
 			</InnerContainer>
 		</Container>
 	);
